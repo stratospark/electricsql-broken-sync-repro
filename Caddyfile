@@ -1,0 +1,15 @@
+{
+    admin off
+}
+
+:80 {
+    handle_path /electric/* {
+        uri strip_prefix /electric
+        encode gzip
+        reverse_proxy electric:3000
+    }
+
+    handle {
+        reverse_proxy frontend:5173
+    }
+}
