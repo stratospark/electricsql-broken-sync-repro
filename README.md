@@ -40,6 +40,7 @@ Wait for all services to start up completely.
    ```
 
 4. Open the Chrome Developer Tools (F12 or Right-click > Inspect).
+      ![image](https://github.com/user-attachments/assets/d6a4300f-ec82-4072-8a9d-41cdf510b3e9)
 5. Switch to the Console tab in the Developer Tools.
 
 6. Add working data:
@@ -53,11 +54,7 @@ Wait for all services to start up completely.
 
 ### 3. Reproduce the Bug
 
-1. Drop the tables:
-
-   ```bash
-   psql postgres://postgres:password@localhost:5432/postgres -f drop_all_tables.sql
-   ```
+1. Reset the environment, run `docker-compose down -v` before starting again with `docker-compose up --build`.
 
 2. Set up the tables:
 
@@ -73,8 +70,9 @@ Wait for all services to start up completely.
    psql postgres://postgres:password@localhost:5432/postgres -f todo_add_additional_data_broken.sql
    ```
 
-5. Refresh the application in Chrome again.
-6. Check the console in Chrome Developer Tools. You should now see the bug-related errors.
+5. Check the console in Chrome Developer Tools. You should now see the bug-related errors.
+   ![image](https://github.com/user-attachments/assets/d0effe51-5af1-4bd5-b545-524bc83473ea)
+
 
 ## Expected vs Actual Behavior
 
