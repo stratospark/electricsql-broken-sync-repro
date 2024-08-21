@@ -6,7 +6,14 @@
     handle_path /electric/* {
         uri strip_prefix /electric
         encode gzip
-        reverse_proxy electric:3000
+        reverse_proxy electric:3000 {
+            header_up Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+            header_up Pragma "no-cache"
+            header_up Expires "0"
+        }
+        header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        header Pragma "no-cache"
+        header Expires "0"
     }
 
     handle {
